@@ -16,3 +16,8 @@
 
  [QEMU源码解析阅读](https://github.com/tina2114/Sakura_University/blob/master/QEMU%26KVM%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.md)：CPU虚拟化
 
+1. CPU虚拟化介绍
+2. VMCS介绍
+3. KVM模块初始化
+4. 虚拟机创建
+
