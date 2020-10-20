@@ -28,5 +28,33 @@
 
      要创建虚拟机，需要用户侧的QEMU发起请求，最后将其创建的虚拟机挂载到vm_list为头节点的链表上
 
+<details>
+<summary>2020.10.20：QEMU源码解析阅读</summary>
 
++ [x] QEMU源码解析阅读：CPU虚拟化
 
+  1. QEMU的CPU创建
+
+     QEMU能模拟多种CPU，所以存在一套继承结构
+
+     + CPU对象初始化
+
+       CPU类型初始化(CPUState)，对象实例化(X86CPU)后，具现化(启用realize函数)
+
+     + QEMU和KVM间的共享数据
+
+       可能创建的最大值是三页，每页都有自己的功能，存储两者的共享数据
+
+  2. VCPU运行
+
+     核心代码是do-while循环，cpu运行，遇到事件需要VM Exit就退出到KVM or QEMU，根据信息进行处理，处理完毕cpu再次运行
+
+  3. VCPU调度
+
+     + 在同一物理CPU上运行VCPU
+
+       VMRESUME指令
+
+     + 需要切换到不同的物理CPU
+
+       VMCLEAR，VMPTRLD和VMLAUNCH指令
