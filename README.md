@@ -73,6 +73,8 @@
 
   构建一个AST抽象语法树，但是其只是token的组合，还需要进行处理
 
+  </details>
+
 <details>
 <summary>第四周（2020.6.05-2020.6.14）：compiler(视频加代码）</summary>
 
