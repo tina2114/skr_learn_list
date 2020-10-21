@@ -27,8 +27,8 @@
   3. 虚拟机创建
 
      要创建虚拟机，需要用户侧的QEMU发起请求，最后将其创建的虚拟机挂载到vm_list为头节点的链表上
-
-
+     
+     </details>
 
 <details>
 <summary>2020.10.20：QEMU源码解析阅读</summary>
