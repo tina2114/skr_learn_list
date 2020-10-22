@@ -398,7 +398,7 @@
   2. write中未对写入位置进行检测，存在UAF
   3. 进行常规的伪造，将chunk创建到存储堆块的数组中，里面写入malloc的got表地址
 4. 对got里面进行改写，改成system('cat ./flag')
-  
+
 + [x] [QEMU源码解析阅读](https://github.com/tina2114/Sakura_University/blob/master/QEMU%26KVM%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.md)：CPU虚拟化
 
   1. CPU虚拟化介绍
@@ -418,33 +418,58 @@
 
 <details>
 <summary>2020.10.20：QEMU源码解析阅读</summary>
+
 + [x] [QEMU源码解析阅读](https://github.com/tina2114/Sakura_University/blob/master/QEMU%26KVM%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0.md)：CPU虚拟化
 
-  1. QEMU的CPU创建
+    1. QEMU的CPU创建
 
-     QEMU能模拟多种CPU，所以存在一套继承结构
+       QEMU能模拟多种CPU，所以存在一套继承结构
 
-     + CPU对象初始化
+       + CPU对象初始化
 
-       CPU类型初始化(CPUState)，对象实例化(X86CPU)后，具现化(启用realize函数)
+         CPU类型初始化(CPUState)，对象实例化(X86CPU)后，具现化(启用realize函数)
 
-     + QEMU和KVM间的共享数据
+       + QEMU和KVM间的共享数据
 
-       可能创建的最大值是三页，每页都有自己的功能，存储两者的共享数据
+         可能创建的最大值是三页，每页都有自己的功能，存储两者的共享数据
 
-  2. VCPU运行
+    2. VCPU运行
 
-     核心代码是do-while循环，cpu运行，遇到事件需要VM Exit就退出到KVM or QEMU，根据信息进行处理，处理完毕cpu再次运行
+       核心代码是do-while循环，cpu运行，遇到事件需要VM Exit就退出到KVM or QEMU，根据信息进行处理，处理完毕cpu再次运行
 
-  3. VCPU调度
+    3. VCPU调度
 
-     + 在同一物理CPU上运行VCPU
+       + 在同一物理CPU上运行VCPU
 
-       VMRESUME指令
+         VMRESUME指令
 
-     + 需要切换到不同的物理CPU
+       + 需要切换到不同的物理CPU
 
-       VMCLEAR，VMPTRLD和VMLAUNCH指令
-       
-       </details>
+         VMCLEAR，VMPTRLD和VMLAUNCH指令
 
+         </details>
+
+  <details>
+<summary>2020.10.21：skr_learn_list补全和TokyoWesterns CTF 2018 EscapeMe</summary>
+
++ [x] skr_learn_list：把前面的经历全部补齐了
+
++ [ ] TokyoWesterns CTF 2018 EscapeMe：
+
+  ​	环境配了半天，在16上起不来，看了看题目描述，环境是18。明天在18上试试
+
+  </details>
+
+<details>
+<summary>2020.10.22：TokyoWesterns CTF 2018 EscapeMe和SECCON2018_online_CTF q-escape</summary>
+
+
++ [ ] TokyoWesterns CTF 2018 EscapeMe：
+
+  ​	18上也起不来，没办法，换题目
+
++ [ ] SECCON2018_online_CTF q-escape：
+
+  今日消防演习，不知道谁，把烟雾弹扔我寝室门口了，寝室门还没关，重灾区......	
+
+  结果就是，未完成。
