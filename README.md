@@ -449,7 +449,8 @@
 
          </details>
 
-  <details>
+
+<details>
 <summary>2020.10.21：skr_learn_list补全和TokyoWesterns CTF 2018 EscapeMe</summary>
 
 + [x] skr_learn_list：把前面的经历全部补齐了
@@ -462,8 +463,6 @@
 
 <details>
 <summary>2020.10.22：TokyoWesterns CTF 2018 EscapeMe和SECCON2018_online_CTF q-escape</summary>
-
-
 + [ ] TokyoWesterns CTF 2018 EscapeMe：
 
   ​	18上也起不来，没办法，换题目
@@ -473,3 +472,50 @@
   今日消防演习，不知道谁，把烟雾弹扔我寝室门口了，寝室门还没关，重灾区......	
 
   结果就是，未完成。
+
+  </details>
+
+<details>
+<summary>2020.10.23：SECCON2018_online_CTF q-escape</summary>
+
++ [x] SECCON2018_online_CTF q-escape：典型的边界检测不严，导致溢出能对结构体的下一个数组进行操作
+
+  ​	这题基本操作不难，不过学到了一个平时不注意的小细节，opaque->vs[0x10]实际上就是latch[0]，opaque->vs[idx].buf是自动将latch[0]里面的内容当作指针来识别。
+
+  ​	核心思想就是利用越界，将latch[0]里面的数据改为不同的got表地址，修改got里面的数据来达成system("cat flag")
+
+  </details>
+
+<details>
+<summary>2020.10.24-25：ByteCTF</summary>
+
+​	Nu1L有本书是ctfer从0到1，打了ByteCTF，我直接从1到0。裂开。
+
+​	</details>
+
+<details>
+<summary>2020.10.26：leetcode和QEMU源码解析阅读</summary>
+
++ [x] leetcode：845 数组中的最长山脉
+
+  左右分割，遍历数组，找到左右size相加最大的值
+
++ [x] QEMU源码解析：内存虚拟化
+
+  EPT寻址方式：
+
+  + 四级页表（每个9位的offset）+ 页(4kb)内偏移（12位的offset）
+  + EPTP里获取基址，然后基址+偏移找到下一个页表的起始地址，以此循环往复
+
+  QEMU内存初始化的基本结构：
+
+  + `AddressSpace`结构体：表示一个虚拟机或者虚拟CPU能够访问的所有物理地址（这里指的是寻址地址）
+  + `MemoryRegion`结构体：表示虚拟机的一段内存区域
+
+  QEMU虚拟机内存初始化：
+
+  + 低端内存和高端内存
+
+  + 主要初始化由pc_memory_init函数完成：
+
+    分配虚拟机的实际物理内存，创建ram_below_4g region，创建fw_cfg设备等
