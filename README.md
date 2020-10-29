@@ -478,7 +478,7 @@
 <details>
 <summary>2020.10.23：SECCON2018_online_CTF q-escape</summary>
 
-+ [x] SECCON2018_online_CTF q-escape：典型的边界检测不严，导致溢出能对结构体的下一个数组进行操作
++ [x] [SECCON2018_online_CTF q-escape](https://github.com/tina2114/Sakura_University/tree/master/%E5%A4%96%E5%8D%A1%E8%B5%9B/SECCON2018_online_CTF%20q-escape)：典型的边界检测不严，导致溢出能对结构体的下一个数组进行操作
 
   ​	这题基本操作不难，不过学到了一个平时不注意的小细节，opaque->vs[0x10]实际上就是latch[0]，opaque->vs[idx].buf是自动将latch[0]里面的内容当作指针来识别。
 
@@ -500,7 +500,7 @@
 
   左右分割，遍历数组，找到左右size相加最大的值
 
-+ [x] QEMU源码解析：内存虚拟化
++ [x] [QEMU源码解析](https://github.com/tina2114/Sakura_University/blob/master/QEMU%26KVM%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0.md)：内存虚拟化
 
   EPT寻址方式：
 
@@ -519,3 +519,60 @@
   + 主要初始化由pc_memory_init函数完成：
 
     分配虚拟机的实际物理内存，创建ram_below_4g region，创建fw_cfg设备等
+    
+    </details>
+
+<details>
+<summary>2020.10.27：QEMU源码解析阅读</summary>
+
+
++ [x] [QEMU源码解析](https://github.com/tina2114/Sakura_University/blob/master/QEMU%26KVM%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0.md)：内存虚拟化
+
+  内存更改通知：
+
+  初始化，更新AddressSpace的内存视图，每个注册的MemoryListener调用commit回调函数
+
+  内存平坦化：
+
+  主要是将原本的内存拓扑的无环图结构转换成在一个FlatRange结构的数组里面。
+  
+  </details>
+
+<details>
+<summary>2020.10.28：QEMU源码解析阅读和leetcode</summary>
+
++ [x] QEMU源码解析：内存虚拟化
+
+  KVM注册内存：
+
+  AddressSpace上的内存布局主要由`address_space_update_topology`函数来更新，并且把内存拓扑信息同步到KVM。
+
+  内存分派表的构建：
+
+  QEMU的内存分派指的是，当给定一个AddressSpace和一个地址时，能够快速地找到其所在的MemoryRegionSection，从而找到对应的MemoryRegion
+
+  + 具体的寻址过程：ptr中存储一个地址，根据物理地址本身一些位作为Node的索引，找隶属PhysPageEntry，类似于MMU寻址，层层页表寻找，根据最后的PhysPageEntry的ptr找到sections数组，得到MemoryRegionection
+  + 具体的创建过程：类似于页表创建，计算当前页目录中一项能够表示多少内存空间step，判断当前页目录项对应的页表是否存在，不存在就分配一个Node，不断循环以上步骤，最后一页页表的index是PhysPageMap中sections数组中的索引。
+
++ [x] leetcode：1207 独一无二的出现次数
+
+  运用Map和set容器来进行重复出现次数是否一致的判断
+
+<details>
+<summary>2020.10.29：QEMU源码解析阅读</summary>
+
++ [x] QEMU源码解析：内存虚拟化
+
+  虚拟机物理地址的设置：
+
+  1. 遍历内存槽，查看要创建的slot是否与当前的内存条的slot有重合
+  2. 获取需要创建的页面个数，分配内存空间（这里存在检测：是否对齐，用户态设置是否允许大页）
+  3. 创建slot的内存槽，将其id号，虚拟机的物理内存地址，大小，对应用户态进程中分配的虚拟机地址等信息传入内存槽，并将该内存槽插入slots->memslots，并对齐按gfn从大到小排序
+
+  MMIO机制：
+
+  1. QEMU申明一段内存作为MMIO内存，但这不会导致实际QEMU进程的内存分配
+  2. SeaBIOS会分配好所有设备MMIO对应的基址
+  3. 当Guest第一次访问MMIO的地址时，会发生EPT violation，产生VM Exit
+  4. KVM创建一个EPT页表，并设置页表项特殊标志
+  5. 虚拟机之后再访问对应的MMIO地址的时候就会产生EPT misconfig，从而产生VM Exit，退出到KVM，然后KVM负责将该事件分发到QEMU
