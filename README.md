@@ -580,3 +580,37 @@
   5. 虚拟机之后再访问对应的MMIO地址的时候就会产生EPT misconfig，从而产生VM Exit，退出到KVM，然后KVM负责将该事件分发到QEMU
   
   </details>
+
+<details>
+<summary>2020.10.30：leetcode和复习前面知识</summary>
+
++ [x] leetcode：求根到叶子节点数字之和
+
+  这里简单的运用现实里正常数学的算法，每进入下一层，sum*10 + root->val，其余的就是一些边界性特殊性的检测，对于root节点特殊处理判断，防止只有root节点情况等。
+
++ [x] 复习QEMU源码一书的前几章
+
+  </details>
+
+<details>
+<summary>2020.10.31：身体原因，去了趟医院</summary>
+
+​		</details>
+
+<details>
+<summary>2020.11.1：CSAW-CTF-2018-Quals kvm</summary>
+
++ [ ] CSAW-CTF-2018-Quals kvm：
+
+  进行到了传入虚拟机执行代码的逆向，刚理清这个运行代码的整体框架。
+  
+  </details>
+
+<details>
+<summary>2020.11.2：CSAW-CTF-2018-Quals kvm</summary>
+
++ [x] CSAW-CTF-2018-Quals kvm：
+
+  创建一个虚拟机，然后将代码传入虚拟机中，传入虚拟机的代码是哈夫曼编码，进行的处理是将数据进行二进制压缩，然后遍历二叉树，遍历的叶子节点去填充buf，然后这个buf跟正确的值去比较。所以我们需要做的就是脚本读取压缩的密码，然后将其放到树上正确的位置，使用哈夫曼解码算法和正确的树来解压缩密码。
+
+  
