@@ -625,3 +625,94 @@
   1. QEMU以树形结构模拟了虚拟机系统的设备和总线，个人理解类似于单总线模式
   2. 设备创建有两种方式：命令行--device创建，跟随主板初始化创建
   3. 总线命名方式，根据有无指定名字，父设备有无id来依次决定其名字
+  
+  </details>
+
+<details>
+<summary>2020.11.4：QEMU源码解析阅读和学校软工项目</summary>
+
++ [x] 设备虚拟化：
+
+  1. PCI设备主要通过MMIO和PIO与操作系统交互
+  2. 设备寄存器和I/O端口提供操作系统向设备的通信，中断机制提供设备向操作系统的通信。
+
++ [ ] 学校软工项目
+
+  </details>
+
+<details>
+<summary>2020.11.5：QEMU源码解析阅读和leetcode和学校软工项目</summary>
+
++ [x] 设备虚拟化：
+
+  ​	虚拟机通过两部分（前端设备和后端设备）来完成与外界通信设备的模拟
+
+  ​	前端负责与虚拟机打交道，管理虚拟机的I/O，后端负责与宿主机打交道，将虚拟机的I/O请求转换为宿主机上的I/O请求
+
++ [ ] 学校软工项目
+
++ [x] leetcode：插入区间
+
+  新创建一个vector<vector<int>> ret变量，先将所有区间范围小于newInterval的区间存入，再进行循环合并，比较intervals中区间的front()与newInterval.back()，然后进行大小的合并。最后将后续的依次压入。
+
+  </details>
+
+<details>
+<summary>2020.11.6：QEMU源码解析阅读和leetcode和学校软工项目</summary>
+
++ [x] 设备虚拟化：
+
+  ​	网卡参数解析：
+
+  1. 命令行中指定了参数，会放到相应的QemuOpsList
+  2. 每类参数都有对应的函数来进行解析
+  3. 参数最终放到了object对象里面，object对象保存了QEMU命令行信息
+
++ [x] leetcode：根据数字二进制下1的数目排序
+
+  这里主要的点就是如何提取vector元素中二进制的1，这里我们运用了a &= (a-1)，这样每次a比之前缺失一个1，这样能快速计算出1的个数
+
++ [ ] 学校软工项目
+
+  </details>
+
+<details>
+<summary>2020.11.7：Codeql学习和学校软工项目</summary>
+
++ [ ] Codeql：
+
+  根据知乎上的一个codeql学习笔记学习了一波
+
++ [ ] 学校软工项目
+
+  </details>
+
+<details>
+<summary>2020.11.8：leetcode和学校软工项目和Codeql</summary>
+
++ [x] Codeql：
+
+  研究数据库该怎么创建，总是报错，最后通过WSL绕弯子创建解决了。
+
++ [x] leetcode：买卖股票的最佳时机
+
+  找到数组中前一位比后一位小的下标，然后依次循环判断前一位是否比后一位小，选择这之间最小的和最大的进行相减，接着重复上述过程。
+
++ [ ] 学校软工项目
+
+  </details>
+
+<details>
+<summary>2020.11.9：leetcode和学校软工项目</summary>
+
++ [x] leetcode：最接近原点的K个点
+
+  一共两个点，一是要对距离能够进行排序，二是要获取排序后距离对应的vector。这点可以由multimap来完成，multimap允许重复的key。将距离和对应的vector依次压入multimap，multimap会自动根据key进行从小到大的排序。
+
++ [x] 学校软工项目
+
+  收工收工，成功验收。
+
+  但是后面....... java web怎么又开始了，or2
+
+  </details>
