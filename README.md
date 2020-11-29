@@ -716,3 +716,82 @@
   但是后面....... java web怎么又开始了，or2
 
   </details>
+
+<details>
+<summary>2020.11.10：QEMU源码阅读</summary>
+
+</details>
+
+<details>
+<summary>2020.11.11：QEMU源码阅读</summary>
+
+</details>
+
+<details>
+<summary>2020.11.12：Codeql学习</summary>
+
++ [ ] Codeql学习：完成到lab9
+
+</details>
+
+<details>
+<summary>2020.11.13：Codeql学习</summary>
+
++ [x] Codeql学习：github上的教程已学习完毕，但是homework还未分析完毕
+
+</details>
+
+<details>
+<summary>2020.11.14：cve-2019-6788复现</summary>
+
++ [ ] cve-2019-6788：
+
+  在传入数据不包含"\r""\n"的情况下，储存数据的堆块空间真实大小不会更新，从而导致可以无限往堆中memcpy，达到堆溢出效果。
+
+</details>
+
+<details>
+<summary>2020.11.15：cve-2019-6788复现</summary>
+
++ [ ] cve-2019-6788：
+
+  poc已完成，但是exp难度有点大，难以分析下去，暂且搁置。
+
+</details>
+
+<details>
+<summary>2020.11.16：QEMU源码阅读</summary>
+
+</details>
+
+<details>
+<summary>2020.11.17：QEMU源码阅读</summary>
+
+</details>
+
+<details>
+<summary>2020.11.18：QEMU源码阅读</summary>
+
+</details>
+
+<details>
+<summary>2020.11.19：QEMU源码阅读</summary>
+
+</details>
+
+<details>
+<summary>2020.11.20：2019数字经济docker逃逸</summary>
+
++ [x] **[2019 数字经济共测大赛 docker逃逸](https://github.com/tina2114/Sakura_University/tree/master/外卡赛/2019 数字经济共测大赛/docker)**：入门题，后门已写好，主要就是逆向，看懂
+
+</details>
+
+<details>
+<summary>2020.11.21：2019数字经济qemu逃逸</summary>
+
++ [x] 2019 数字经济共测大赛 qemu逃逸：与上面类似，有command，写入弹计算器的指令即可
+
+<details>
+<summary>2020.11.22 - 2020.11.29：期末大项目，复习，准备面试</summary>
+
+</details>
